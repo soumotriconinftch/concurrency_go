@@ -5,7 +5,8 @@ import (
 	"sync"
 )
 
-func printsomething(s string) {
+func printsomething(s string, wg *sync.WaitGroup) {
+	defer wg.Done()
 	fmt.Println(s)
 }
 
@@ -25,9 +26,9 @@ func main() {
 	}
 	wg.Add(8)
 	for i, x := range words {
-		go printsomething(fmt.Sprintf("%d: %s", i, x))
+		go printsomething(fmt.Sprintf("%d: %s", i, x), &wg)
 	}
 	wg.Wait()
 	// time.Sleep(1 * time.Second)
-	printsomething("hello world 2nd")
+	// printsomething("hello world 2nd")
 }
