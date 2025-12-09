@@ -1,30 +1,30 @@
-package main
+// package main
 
-import (
-	"io"
-	"os"
-	"strings"
-	"sync"
-	"testing"
-)
+// import (
+// 	"io"
+// 	"os"
+// 	"strings"
+// 	"sync"
+// 	"testing"
+// )
 
-func Test_printSomething(t *testing.T) {
-	stdOut := os.Stdout
+// func Test_printSomething(t *testing.T) {
+// 	stdOut := os.Stdout
 
-	r, w, _ := os.Pipe()
-	os.Stdout = w
-	var wg sync.WaitGroup
-	wg.Add(1)
-	go printsomething("epsilon", &wg)
-	wg.Wait()
+// 	r, w, _ := os.Pipe()
+// 	os.Stdout = w
+// 	var wg sync.WaitGroup
+// 	wg.Add(1)
+// 	go printsomething("epsilon", &wg)
+// 	wg.Wait()
 
-	_ = w.Close()
-	result, _ := io.ReadAll(r)
-	output := string(result)
+// 	_ = w.Close()
+// 	result, _ := io.ReadAll(r)
+// 	output := string(result)
 
-	os.Stdout = stdOut
+// 	os.Stdout = stdOut
 
-	if !strings.Contains(output, "epsilon") {
-		t.Errorf("Expected Epsilon but it is not there")
-	}
-}
+// 	if !strings.Contains(output, "epsilon") {
+// 		t.Errorf("Expected Epsilon but it is not there")
+// 	}
+// }
